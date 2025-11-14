@@ -18,7 +18,7 @@ import numpy as np
 
 # 输入文件路径
 # 假设surprisal文件是一个简单的文本文件，每行一个surprisal值
-SURPRISAL_FILE_PATH = 'outputs/merged_surprisal_with_pca.csv' 
+SURPRISAL_FILE_PATH = 'outputs/merge/merged_probabilities_with_avg.csv' 
 
 # 假设文本信息文件是一个CSV文件
 TEXT_INFO_FILE_PATH = 'outputs/GECO-EnglishMaterial.csv'
@@ -31,7 +31,7 @@ PROCESSED_DATA_OUTPUT_PATH = 'outputs/processed_experiment_data.csv'
 
 # Reading Data Path
 READING_DATA_PATH = 'MonolingualReadingData.xlsx'
-READING_DATA_OUTPUT_PATH = 'outputs/DATA_GECO.csv'
+READING_DATA_OUTPUT_PATH = 'outputs/merge/DATA_GECO.csv'
 
 
 # ===============================================================
@@ -65,7 +65,8 @@ try:
     # 读取 surprisal 文件 (假设为单列无表头)
     print(f"正在读取 surprisal 文件: {SURPRISAL_FILE_PATH}")
     surprisal_df = pd.read_csv(SURPRISAL_FILE_PATH)
-    surprisal_df['averaged_prob'] = surprisal_df['PC1_prob']
+    surprisal_df['averaged_prob'] = surprisal_df['avg_probability']
+    #surprisal_df['averaged_surprisal'] = surprisal_df.iloc[:,3:].mean(axis=1)
     print(f"成功读取 {len(surprisal_df)} 行 surprisal 数据。")
 
     # 读取文本信息文件
@@ -282,7 +283,6 @@ final_columns_to_keep = [
     'GD',
     'SFD',
     'TT',
-    'Gopast',
     
     # 主要自变量
     'prob',
