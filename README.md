@@ -11,9 +11,17 @@ See https://osf.io/35ke6 for the results based on 25 models.
 
 The process is divided into several key steps, from model downloading to final data consolidation.
 
+### Step 0: Packages
+
+```bash
+pip install "jax[cuda12_pip]==0.4.27" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+pip install pymc numpyro pandas matplotlib seaborn arviz
+pip install torch transformers einops transformers_stream_generator sentencepiece tiktoken protobuf accelerate
+```
+
 ### Step 1: Download Models
 
-First, download the necessary language models from the Hugging Face Hub. The `EN_download_models.sh` script is provided for this purpose.
+First, download the necessary language models from the Hugging Face Hub. The `EN_download_models.sh` and `EN_download_models_bin.sh` is provided for this purpose.
 
 Before running, you may want to modify the script to specify the exact model names you wish to download.
 
