@@ -18,7 +18,7 @@ import numpy as np
 
 # 输入文件路径
 # 假设surprisal文件是一个简单的文本文件，每行一个surprisal值
-SURPRISAL_FILE_PATH = 'outputs/merged_surprisal_with_pca.csv' 
+SURPRISAL_FILE_PATH = 'outputs/merge/merged_probabilities_with_avg.csv' 
 
 # 假设文本信息文件是一个CSV文件
 TEXT_INFO_FILE_PATH = 'outputs/HKC-ChineseMaterial.csv'
@@ -27,11 +27,11 @@ TEXT_INFO_FILE_PATH = 'outputs/HKC-ChineseMaterial.csv'
 WORD_FREQ_FILE_PATH = 'SUBTLEX-CH-WF.xlsx'
 
 # 输出文件路径
-PROCESSED_DATA_OUTPUT_PATH = 'outputs/processed_experiment_data.csv'
+PROCESSED_DATA_OUTPUT_PATH = 'outputs/merge/processed_experiment_data.csv'
 
 # Reading Data Path
 READING_DATA_PATH = 'data_all.csv'
-READING_DATA_OUTPUT_PATH = 'outputs/DATA_HKC.csv'
+READING_DATA_OUTPUT_PATH = 'outputs/merge/DATA_HKC.csv'
 
 
 # ===============================================================
@@ -60,7 +60,7 @@ try:
     # 读取 surprisal 文件 (假设为单列无表头)
     print(f"正在读取 surprisal 文件: {SURPRISAL_FILE_PATH}")
     surprisal_df = pd.read_csv(SURPRISAL_FILE_PATH)
-    surprisal_df['averaged_prob'] = surprisal_df['PC1_prob']
+    surprisal_df['averaged_prob'] = surprisal_df['avg_probability']
     print(f"成功读取 {len(surprisal_df)} 行 surprisal 数据。")
 
     # 读取文本信息文件
@@ -77,6 +77,7 @@ try:
     # 直接横向合并 (顺序是对齐的，基于textprocessing和surprisal_v1逻辑)
     print("正在合并 surprisal 和文本信息...")
     df_main = pd.concat([text_info_df, surprisal_df], axis=1)
+    df_main[TEXT_INFO_WORD_COL] = df_main[TEXT_INFO_WORD_COL].str.strip().str.replace(r"[^\w\s'-]", "", regex=True)
     print("合并完成。")
 
     # 读取词频文件 (只取需要的两列)
@@ -282,8 +283,6 @@ final_columns_to_keep = [
     'GD',
     'SFD',
     'TT',
-    'Gopast',
-    'Gopast1',
     
     # 主要自变量
     'prob',
