@@ -4,6 +4,9 @@ This project provides a suite of scripts to estimate word surprisal using Large 
 
 This repository contains the processing pipeline used for six datasets. The comment in scripts within the `GECOCN` folder are provided in English.
 
+See https://osf.io/35ke6 for the results based on 25 models.
+
+
 ## Workflow & Usage
 
 The process is divided into several key steps, from model downloading to final data consolidation.
