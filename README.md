@@ -1,0 +1,59 @@
+# LLM-based Surprisal Estimation
+
+This project provides a suite of scripts to estimate word surprisal using Large Language Models (LLMs). The workflow is designed to preprocess text datasets, calculate surprisal for target words, and merge the results back into the original data, enriched with word frequency information.
+
+This repository contains the processing pipeline used for six datasets. The comment in scripts within the `GECOCN` folder are provided in English.
+
+## Workflow & Usage
+
+The process is divided into several key steps, from model downloading to final data consolidation.
+
+### Step 1: Download Models
+
+First, download the necessary language models from the Hugging Face Hub. The `EN_download_models.sh` script is provided for this purpose.
+
+Before running, you may want to modify the script to specify the exact model names you wish to download.
+
+To run the script, first make it executable and then run it from your terminal:
+
+```bash
+chmod +x EN_download_models.sh
+./EN_download_models.sh
+```
+
+### Step 2: Data Preprocessing
+
+This step prepares your raw text data for surprisal calculation. The scripts for this are located within each dataset's respective folder (e.g., `GECOCN`).
+
+1.  **`cut-GECOCN.py`**
+    *   **Purpose**: This script processes the raw dataset to define context boundaries for each target word. It annotate the truncation of context where necessary (`cut-col`) and assigns a unique `word_id` to every word.
+
+2.  **`textprocessing-GECOCN.py`**
+    *   **Purpose**: Using the output from the `cut` script, this script formats the data by explicitly defining the context and the target word for each instance. It generates a file that is ready to be used for surprisal estimation.
+
+### Step 3: Surprisal Estimation
+
+The core surprisal calculation is handled by the main script in the root directory.
+
+*   **`surprisal_v6.py`**
+    *   **Purpose**: This is the main file for estimating surprisal. It takes the preprocessed files as input and leverages a pre-trained language model to calculate the surprisal value for each target word.
+    *   **Usage**: Detailed instructions on how to run the script, including command-line arguments and required parameters, are documented within the comments at the top of the `surprisal_v6.py` file. You may want to modify `model_en.txt` for the models that you intend to use.
+
+### Step 4: Post-processing and Data Merging
+
+After the surprisal values have been calculated, the following scripts are used to finalize the dataset.
+
+1.  **`mean.py`** (You will need to create or use this script)
+    *   **Purpose**: Calculates the average surprisal value from the output of the estimation script.
+
+2.  **`preprocessing-GECOCN.py`**
+    *   **Purpose**: This final script merges the calculated surprisal estimations back into the original dataset. It also supplements the data by adding word frequency information derived from the SUBTLEX corpus.
+
+## Using Your Own Dataset
+
+This processing pipeline is designed to be adaptable for other datasets. To use it with your own data, follow these general steps:
+
+1.  **Create a Dataset Folder**: Create a new directory for your dataset (e.g., `my_dataset/`).
+2.  **Prepare Your Data**: Place your raw data files inside this new folder.
+3.  **Identify Dependencies**: To understand which specific files are required for your dataset, inspect the file import statements at the beginning of the `cut.py` and `preprocessing.py` scripts in the example folders. Ensure your folder contains the necessary input files.
+4.  **Adapt Scripts**: Copy and adapt the processing scripts (`cut.py`, `textprocessing.py`, `preprocessing.py`) for your dataset's specific format and file names.
