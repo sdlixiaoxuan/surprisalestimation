@@ -20,9 +20,7 @@ import sys
 from pathlib import Path
 import pandas as pd
 
-# --------------------------------------------------------------------------- #
-#                               核心计算函数                                   #
-# --------------------------------------------------------------------------- #
+
 def calculate_average_of_probabilities(df: pd.DataFrame, out_dir: Path) -> pd.DataFrame:
     
     # -------- 1. select the columns contains estimation --------
@@ -49,9 +47,6 @@ def calculate_average_of_probabilities(df: pd.DataFrame, out_dir: Path) -> pd.Da
 
     return df_out
 
-# --------------------------------------------------------------------------- #
-#                                 CLI                                          #
-# --------------------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser("calculate mean of merged_probabilities.csv")
     parser.add_argument("--csv", required=True, help=" path to merged_probabilities.csv")
