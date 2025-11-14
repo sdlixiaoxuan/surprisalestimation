@@ -68,3 +68,6 @@ This processing pipeline is designed to be adaptable for other datasets. To use 
 2.  **Prepare Your Data**: Place your raw data files inside this new folder.
 3.  **Identify Dependencies**: To understand which specific files are required for your dataset, inspect the file import statements at the beginning of the `cut.py` and `preprocessing.py` scripts in the example folders. Ensure your folder contains the necessary input files.
 4.  **Adapt Scripts**: Copy and adapt the processing scripts (`cut.py`, `textprocessing.py`, `preprocessing.py`) for your dataset's specific format and file names.
+
+## Contributor
+Xiaoxuan Li: sdlixiaoxuan@gmail.com
