@@ -50,16 +50,6 @@ pip install pymc numpyro pandas matplotlib seaborn arviz
 
 The process is divided into several key steps, from model downloading to final data consolidation.
 
-### Step 0: Packages
-
-```bash
-# CUDA  12.4
-conda create -n myenv python=3.10 -y
-pip install "jax[cuda12_pip]==0.4.27" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-pip install pymc numpyro pandas matplotlib seaborn arviz
-pip install torch transformers einops transformers_stream_generator sentencepiece tiktoken protobuf accelerate
-```
-
 ### Step 1: Download Models
 
 First, download the necessary language models from the Hugging Face Hub. The `EN_download_models.sh` and `EN_download_models_bin.sh` is provided for this purpose.
