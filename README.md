@@ -71,3 +71,8 @@ This processing pipeline is designed to be adaptable for other datasets. To use 
 
 ## Contributor
 Xiaoxuan Li: sdlixiaoxuan@gmail.com
+Faculty of Psychology, Beijing Normal University
+
+Feel free to contact me if you need some help :D
+
+2025.11.14
