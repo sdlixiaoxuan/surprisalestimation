@@ -2,7 +2,7 @@
 
 This project provides a suite of scripts to estimate word surprisal using Large Language Models (LLMs). The workflow is designed to preprocess text datasets, calculate surprisal for target words, and merge the results back into the original data, enriched with word frequency information.
 
-This repository contains the processing pipeline used for six datasets. The comment in scripts within the `GECOCN` folder are provided in English.
+This repository contains the processing pipeline used for six datasets. The comments in scripts within the `GECOCN` folder are provided in English.
 
 See https://osf.io/35ke6 for the results based on 25 models.
 
@@ -17,6 +17,7 @@ First, create and activate a new conda environment named `myenv` with Python 3.1
 
 ```bash
 conda create -n myenv python=3.10 -y
+conda init
 conda activate myenv
 ```
 
