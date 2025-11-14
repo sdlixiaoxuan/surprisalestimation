@@ -52,11 +52,13 @@ If your analysis requires probability values instead of surprisal, you can conve
 
 After the surprisal values have been calculated, the following scripts are used to finalize the dataset.
 
-1.  **`mean.py`** (You will need to create or use this script)
+1.  **`mean.py`** 
     *   **Purpose**: Calculates the average surprisal value from the output of the estimation script.
+    *   **Note**: Remember to check the path in the script if you see errors.
 
 2.  **`preprocessing-GECOCN.py`**
     *   **Purpose**: This final script merges the calculated surprisal estimations back into the original dataset. It also supplements the data by adding word frequency information derived from the SUBTLEX corpus.
+    *   **Note**: Remember to check the path in the script if you see errors.
 
 ## Using Your Own Dataset
 
