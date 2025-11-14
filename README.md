@@ -116,6 +116,6 @@ Xiaoxuan Li: sdlixiaoxuan@gmail.com
 
 Faculty of Psychology, Beijing Normal University
 
-Feel free to contact me if you need some help :D
+Feel free to contact me if you have any questions :D
 
 2025.11.14
