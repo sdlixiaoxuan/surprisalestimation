@@ -7,6 +7,45 @@ This repository contains the processing pipeline used for six datasets. The comm
 See https://osf.io/35ke6 for the results based on 25 models.
 
 
+## Setup and Installation
+
+This project requires Python 3.10 and several specific libraries. It is highly recommended to use a virtual environment (like Conda) to manage dependencies. The following instructions are based on a system with **CUDA 12.4**.
+
+### 1. Create a Conda Environment
+
+First, create and activate a new conda environment named `myenv` with Python 3.10.
+
+```bash
+conda create -n myenv python=3.10 -y
+conda activate myenv
+```
+
+### 2. Install JAX with CUDA Support
+
+This project uses JAX. Install the specific version compatible with your CUDA driver. The following command is for CUDA 12.
+
+```bash
+# For CUDA 12.x
+pip install "jax[cuda12_pip]==0.4.27" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+```
+*Note: If you have a different CUDA version or are using a CPU, please refer to the [official JAX installation guide](https://github.com/google/jax#installation) for the correct command.*
+
+### 3. Install PyTorch and Transformers
+
+Next, install PyTorch, Transformers, and other essential libraries for running the language models.
+
+```bash
+pip install torch transformers einops transformers_stream_generator sentencepiece tiktoken protobuf accelerate
+```
+
+### 4. Install Data Science Libraries
+
+Finally, install libraries required for data manipulation and analysis.
+
+```bash
+pip install pymc numpyro pandas matplotlib seaborn arviz
+```
+
 ## Workflow & Usage
 
 The process is divided into several key steps, from model downloading to final data consolidation.
@@ -14,6 +53,8 @@ The process is divided into several key steps, from model downloading to final d
 ### Step 0: Packages
 
 ```bash
+# CUDA  12.4
+conda create -n myenv python=3.10 -y
 pip install "jax[cuda12_pip]==0.4.27" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 pip install pymc numpyro pandas matplotlib seaborn arviz
 pip install torch transformers einops transformers_stream_generator sentencepiece tiktoken protobuf accelerate
