@@ -322,7 +322,7 @@ def main():
     merged = out_dir / "merged_surprisal.csv"
     merged.parent.mkdir(parents=True, exist_ok=True)
     meta_df.to_csv(merged, index=False, encoding="utf-8")
-    print(f"\n✅ all results to: {merged}")
+    print(f"all results to: {merged}")
 
 
 if __name__ == "__main__":
